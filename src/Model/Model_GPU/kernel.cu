@@ -5,9 +5,23 @@
 #define DIFF_T (0.1f)
 #define EPS (1.0f)
 
+static inline void check(cudaError_t err, const char* context) {
+	if (err != cudaSuccess) {
+		std::cerr << "CUDA error: " << context << ": "
+			<< cudaGetErrorString(err) << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+}
+
+#define CHECK(x) check(x, #x)
+
 __global__ void compute_acc(float3 * positionsGPU, float3 * velocitiesGPU, float3 * accelerationsGPU, float* massesGPU, int n_particles)
 {
-	// unsigned int i = blockIdx.x * blockDim.x + threadIdx.x;
+	// constexpr iterations
+	int i = blockIdx.x;
+	int j = threadIdx.x;
+
+
 }
 
 __global__ void maj_pos(float3 * positionsGPU, float3 * velocitiesGPU, float3 * accelerationsGPU)

@@ -11,6 +11,7 @@ Model_CPU_naive
 void Model_CPU_naive
 ::step()
 {
+	
 	std::fill(accelerationsx.begin(), accelerationsx.end(), 0);
 	std::fill(accelerationsy.begin(), accelerationsy.end(), 0);
 	std::fill(accelerationsz.begin(), accelerationsz.end(), 0);
